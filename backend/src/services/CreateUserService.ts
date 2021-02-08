@@ -10,7 +10,7 @@ interface Request {
   name: string;
   email: string;
   password: string;
-  isAdmin: number;
+  is_admin: number;
 }
 
 export default class CreateUserService {
@@ -18,7 +18,7 @@ export default class CreateUserService {
     email,
     name,
     password,
-    isAdmin,
+    is_admin,
   }: Request): Promise<User> {
     const usersRepository = getCustomRepository(UsersRepository);
 
@@ -32,8 +32,9 @@ export default class CreateUserService {
 
     const user = usersRepository.create({
       name,
+      email,
       password: hashedPassword,
-      isAdmin,
+      is_admin,
     });
 
     await usersRepository.save(user);

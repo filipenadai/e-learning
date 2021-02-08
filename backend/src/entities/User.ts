@@ -20,11 +20,11 @@ export default class User {
   password: string;
 
   @Column()
-  isAdmin: number;
+  is_admin: number;
 
   @CreateDateColumn()
-  createdAt: Date;
+  created_at: Date;
 
   @CreateDateColumn()
-  updatedAt: Date;
+  updated_at: Date;
 }
