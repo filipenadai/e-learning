@@ -2,6 +2,7 @@ import { getCustomRepository } from 'typeorm';
 import { sign } from 'jsonwebtoken';
 import { compare } from 'bcryptjs';
 
+import authConfig from '../config/auth';
 import AppError from '../errors/AppError';
 
 import User from '../entities/User';
@@ -19,6 +20,8 @@ interface IResponse {
 
 class AuthenticateUserService {
   public async execute({ email, password }: IRequest): Promise<IResponse> {
+    const { expiresIn, secret } = authConfig.jwt;
+
     const usersRepository = getCustomRepository(UsersRepository);
 
     const user = await usersRepository.findByEmail(email);
@@ -30,9 +33,9 @@ class AuthenticateUserService {
     if (!passwordMatched)
       throw new AppError('Incorrect email/password combination', 401);
 
-    const token = sign({}, 'jwktokendev', {
+    const token = sign({}, secret, {
       subject: user.id,
-      expiresIn: '1d',
+      expiresIn,
     });
 
     return {
