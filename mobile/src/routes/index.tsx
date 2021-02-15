@@ -1,20 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
+import { useAuth } from '../hooks/auth';
 import AppRoutes from './app.routes';
 import Splash from '../pages/Splash';
 
 const Routes: React.FC = () => {
-  const [loading, setLoading] = useState(true);
+  const { loading } = useAuth();
 
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 5000);
-  }, []);
-
-  if (loading) {
-    return <Splash />;
-  }
+  if (loading) return <Splash />;
 
   return <AppRoutes />;
 };
