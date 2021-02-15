@@ -1,5 +1,4 @@
 import React from 'react';
-import { Alert } from 'react-native';
 
 import ePresentation from '../../assets/e-presentation.png';
 import student from '../../assets/student.png';
@@ -27,7 +26,7 @@ const Presentation: React.FC = () => (
         Entre na plataforma e acesse cursos de diversas áreas de conhecimento.
       </Description>
     </Introduction>
-    <Button onPress={() => console.log('a')}>
+    <Button onPress={() => console.log('Teste')}>
       <ButtonText>Começar os estudos</ButtonText>
     </Button>
   </Container>
