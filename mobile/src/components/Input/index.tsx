@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 import { TextInputProps } from 'react-native';
 
 import { Container, TextInput } from './styles';
@@ -16,12 +16,18 @@ interface InputRef {
   focus(): void;
 }
 
-const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = () => {
+const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = ({
+  ...rest
+}) => {
   return (
     <Container isErrored={false} isFocused={false}>
-      <TextInput keyboardAppearance="dark" placeholderTextColor="#666360" />
+      <TextInput
+        {...rest}
+        keyboardAppearance="dark"
+        placeholderTextColor="#666360"
+      />
     </Container>
   );
 };
 
-export default forwardRef(Input);
+export default Input;

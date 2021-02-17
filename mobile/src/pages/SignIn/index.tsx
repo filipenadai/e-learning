@@ -1,34 +1,23 @@
 import React from 'react';
 
 import logoImg from '../../assets/logo.png';
-import {
-  Container,
-  Image,
-  Button,
-  ButtonText,
-  Footer,
-  ButtonFooter,
-  FormContainer,
-} from './styles';
+import { Container, Image, Button, ButtonText, FormContainer } from './styles';
 
 import Input from '../../components/Input';
+import SignUp from '../SignUp';
 
 const SignIn: React.FC = () => {
   return (
     <Container>
       <FormContainer>
         <Image source={logoImg} />
-        <Input name="email" />
-        <Input name="password" />
+        <Input placeholder="Email" name="email" />
+        <Input placeholder="Senha" name="password" />
         <Button onPress={() => console.log('Teste')}>
           <ButtonText>Entrar</ButtonText>
         </Button>
       </FormContainer>
-      <Footer>
-        <ButtonFooter>
-          <ButtonText>Registre-se</ButtonText>
-        </ButtonFooter>
-      </Footer>
+      <SignUp />
     </Container>
   );
 };
