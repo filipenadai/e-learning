@@ -1,15 +1,20 @@
 import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import { useAuth } from '../hooks/auth';
-import AppRoutes from './app.routes';
-import Splash from '../pages/Splash';
+import Login from '../screens/Login';
+import TabBottomNavigator from '../components/TabNavigator';
 
-const Routes: React.FC = () => {
-  const { loading } = useAuth();
+const Stack = createStackNavigator();
 
-  if (loading) return <Splash />;
-
-  return <AppRoutes />;
-};
+const Routes: React.FC = () => (
+  <Stack.Navigator
+    screenOptions={{
+      headerShown: false,
+    }}
+  >
+    <Stack.Screen name="Login" component={Login} />
+    <Stack.Screen name="Courses" component={TabBottomNavigator} />
+  </Stack.Navigator>
+);
 
 export default Routes;
